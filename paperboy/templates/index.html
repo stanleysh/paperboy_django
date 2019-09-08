@@ -8,7 +8,7 @@
   </head>
   <body>
     <header class='site-heading'>
-      <h1>Paperboys</h1>
+      <h1><a href = "/">Paper delivery</a></h1>
     </header>
     <section class='summary'>
       <p>Total papers delivered: <em class='stats'>{{ total_papers }}</em></p>
@@ -17,7 +17,7 @@
     <ul>
       {% for pb in paperboys %}
         <li class='paperboy'>
-          <h2 class='paperboy-heading'>{{ pb.name }}</h2>
+          <h2 class='paperboy-heading'><a href="{% url 'view' id=pb.id %}">{{ pb.name }}</a></h2>
           <p>{{ pb.report }}</p>
           <form class='deliver-form' action="{% url 'deliver' id=pb.id %}" method='post'>
             {% csrf_token %}

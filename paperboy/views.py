@@ -13,3 +13,9 @@ def deliver(request, id):
     ad2 = request.POST['address2']
     pb.deliver(int(ad1), int(ad2))
     return HttpResponseRedirect('/')
+
+def viewpb(request, id):
+    pb = get_object_or_404(Paperboy, id = id)
+    earnings = "{:10.2f}".format(pb.total_earnings())
+    context = {'pb': pb}
+    return HttpResponse(render(request, 'viewpb.html', context))
